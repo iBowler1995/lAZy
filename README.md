@@ -32,3 +32,4 @@ Once you've successfully authenticated to your AAD tenant, the other modules wil
 
 # Functionality Notes
 * All forms requiring user email address for input will have the action button disabled until the email address field contains a string with '.com', '.edu', or '.gov'. If there are any other TLDs you'd like to see added, please submit a feature request!
+* Microsoft license options available in AA can be expanded; I have selected the most used (in my experience) to start with, but if you have other licenses you'd like to see, please submit a feature request *along with the license SkuID.* The SkuID can be found in several ways, including querying with Graph: GET https://graph.microsoft.com/v1.0/subscrikedSkus, or with the Microsoft.Graph.Identity.DirectoryManagement module command `Get-MgSubscribedSku | select skuPartNumber, SkuId | Format-List`
