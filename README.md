@@ -29,3 +29,6 @@ Once you've successfully authenticated to your AAD tenant, the other modules wil
 * Remove from Group: Accepts user's email as input, loads user's groups, and removes user from any selected groups
 * Reset Password: Accepts user's email address as input, as well as new password (if you're not using the Random buttonthat is, which is generally more secure than most help desk assigned passwords I've run into in my times)
 * Terminate User: Accepts user's email address as input and terminates user. Following actions are taken: 1. User disabled 2. Z_Term_ added to the front of the user's display name. 3. Removes user from all static groups (cannot remove from dynamic groups). 4. Removes all assigned licenses to the user. (Author's note: As I introduce mailbox management, I plan on adding an optional parameter to let you convert user boxes to shared mailboxes for termed users.)
+
+# Functionality Notes
+* All forms requiring user email address for input will have the action button disabled until the email address field contains a string with '.com', '.edu', or '.gov'. If there are any other TLDs you'd like to see added, please submit a feature request!
