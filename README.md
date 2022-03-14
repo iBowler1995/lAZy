@@ -33,3 +33,13 @@ Once you've successfully authenticated to your AAD tenant, the other modules wil
 # Functionality Notes
 * All forms requiring user email address for input will have the action button disabled until the email address field contains a string with '.com', '.edu', or '.gov'. If there are any other TLDs you'd like to see added, please submit a feature request!
 * Microsoft license options available in AA can be expanded; I have selected the most used (in my experience) to start with, but if you have other licenses you'd like to see, please submit a feature request *along with the license SkuID.* The SkuID can be found in several ways, including querying with Graph: `GET https://graph.microsoft.com/v1.0/subscrikedSkus`, or with the Microsoft.Graph.Identity.DirectoryManagement module command `Get-MgSubscribedSku | select skuPartNumber, SkuId | Format-List`
+
+# Required delegated Graph API permissions
+Note: only one is required from each list. Each list is also sorted from least to most privileged permissions for better clarity. See https://docs.microsoft.com/en-us/graph/permissions-reference for more/better information on Graph API permissions
+* Assigning licenses: User.ReadWrite.All, Directory.ReadWrite.All
+* Adding user to group(s): GroupMember.ReadWrite.All, Group.ReadWrite.All, Directory.ReadWrite.All, Directory.AccessAsUser.All
+* Creating assigned groups: Group.ReadWrite.All, Directory.ReadWrite.All, Directory.AccessAsUser.All
+* Creating new user: 	User.ReadWrite.All, Directory.ReadWrite.All, Directory.AccessAsUser.All
+* Disable user, Edit user, Enable user, Reset password:: User.ReadWrite, User.ReadWrite.All, User.ManageIdentities.All, Directory.ReadWrite.All, Directory.AccessAsUser.All
+* Remove from group: GroupMember.ReadWrite.All, Group.ReadWrite.All, Directory.ReadWrite.All, Directory.AccessAsUser.All
+* Terminate user: each of the above 
