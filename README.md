@@ -11,10 +11,6 @@ Currently the only pre-requisite to deploying AA to your environment is you'll n
 Once you have your application set up, note your ApplicationID (also called ClientID) and enter it in on first run.
 
 # First Run
-The first time you launch the application, it will do the following tasks:
-* Check for log folder and create if not exist
-* Check for MSAL.PS module and install if not installed
-
 All modules will be locked until you Log In. On first run, clicking the Log In button will open the GetClient form for the user to paste the ClientID into (Author's note: While I wouldn't share your application's ID with the world, it doesn't necessarily need to be kept in a top-secret vault. As long as you have the *Who can use this application or access this API?* setting for your registered application set to *Accounts in this organizational directory only*, only accounts from your tenant can authenticate to the app or API.)
 Once you've successfully authenticated to your AAD tenant, the other modules will be unlocked. Do note that if MFA is enabled on your account, you'll need to approve the login request.
 
