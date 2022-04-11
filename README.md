@@ -1,4 +1,4 @@
-# Welcome to the Lazy Azure Administrator Project!
+# Welcome to the lAZy (formerly known as Lazy Azure Administrator) Project!
 
 Azure Administrator (AA) is a simple GUI application designed to handle most of your help desk needs. It currently focuses on user and group management, but future updates I plan to bring will add even more features such as mailbox management and AAD/Intune device management!
 
