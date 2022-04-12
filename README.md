@@ -3,6 +3,8 @@
 lAZy is a simple GUI application designed to handle most of your Azure and Intune Help Desk needs.
 
 # How to Install
+Download MSI from [here](https://github.com/iBowler1995/LazyAzureAdministrator/blob/main/lAZy.msi?raw=true). SHA256 hashfile: df51e6e6f7419da3a00fab5fb4d68c8bf46b12422979ec8e17d85090d9243561
+
 lAZy is lightweight and extremely simple to install. Launch the MSI manually and click through the setup wizard, or install it programatically using the following command:
 `msiexec /i lAZy.msi /qn`
 
