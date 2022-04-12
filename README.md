@@ -3,11 +3,11 @@
 Azure Administrator (AA) is a simple GUI application designed to handle most of your help desk needs. It currently focuses on user and group management, but future updates I plan to bring will add even more features such as mailbox management and AAD/Intune device management!
 
 # How to Install
-AA is lightweight and extremely simple to install. Launch the MSI manually and click through the setup wizard, or install it programatically using the following command:
-`msiexec /i AzureAdmin.msi /qn`
+lAZy is lightweight and extremely simple to install. Launch the MSI manually and click through the setup wizard, or install it programatically using the following command:
+`msiexec /i lAZy.msi /qn`
 
 # Environment deployment pre-requisite(s)
-Currently the only pre-requisite to deploying AA to your environment is you'll need to set up a registered application in your AAD tenant. Microsoft has a really easy and straightforward guide on this: https://docs.microsoft.com/en-us/graph/auth-v2-user as well as this article on how to set up delegated API permissions: https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis NOTE: The redirect I use for AA in my environment: https://login.microsoftonline.com/common/oauth2/nativeclient
+Currently the only pre-requisite to deploying lAZy to your environment is you'll need to set up a registered application in your AAD tenant. Microsoft has a really easy and straightforward guide on this: https://docs.microsoft.com/en-us/graph/auth-v2-user as well as this article on how to set up delegated API permissions: https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis NOTE: The redirect I use for lAZy in my environment: https://login.microsoftonline.com/common/oauth2/nativeclient
 Once you have your application set up, note your ApplicationID (also called ClientID) and enter it in on first run.
 
 # First Run
@@ -25,10 +25,21 @@ Once you've successfully authenticated to your AAD tenant, the other modules wil
 * Remove from Group: Accepts user's email as input, loads user's groups, and removes user from any selected groups
 * Reset Password: Accepts user's email address as input, as well as new password (if you're not using the Random buttonthat is, which is generally more secure than most help desk assigned passwords I've run into in my times)
 * Terminate User: Accepts user's email address as input and terminates user. Following actions are taken: 1. User disabled 2. Z_Term_ added to the front of the user's display name. 3. Removes user from all static groups (cannot remove from dynamic groups). 4. Removes all assigned licenses to the user. (Author's note: As I introduce mailbox management, I plan on adding an optional parameter to let you convert user boxes to shared mailboxes for termed users.)
+* Application Install Status: Review or export the install status of a managed app on Intune devices
+* Assign Application: assign an Intune application to a specified AAD group with specifed install intent
+* Compliance Policies: Review or export policy status on Intune devices as well as assign policies to specified AAD group(s)
+* Configuration Policies: Review or export policy status on Intune devices as well as assign policies to specified AAD group(s)
+* Device Last Logged On User: Retrieve the user who last logged into the specified Intune device
+* Rename Device: Allows for renaming of Intune devices singularly or all at once
+* Reboot Device: Reboots specified Intune device
+* Reset Device: Reset Intune device with the chosen options
+* Sync Device: Sync Intune device singularly or all at once (not available in Intune portal GUI)
+* Windows Update Status: Review or export Windows Update status for a chosen Intune Update Ring or a specified device (the update ring the specified device is a part of must also be selected for this feature to work)
 
 # Functionality Notes
-* All forms requiring user email address for input will have the action button disabled until the email address field contains a string with '.com', '.edu', or '.gov'. If there are any other TLDs you'd like to see added, please submit a feature request!
-* Microsoft license options available in AA can be expanded; I have selected the most used (in my experience) to start with, but if you have other licenses you'd like to see, please submit a feature request *along with the license SkuID.* The SkuID can be found in several ways, including querying with Graph: `GET https://graph.microsoft.com/v1.0/subscrikedSkus`, or with the Microsoft.Graph.Identity.DirectoryManagement module command `Get-MgSubscribedSku | select skuPartNumber, SkuId | Format-List`
+* All Azure forms requiring user email address for input will have the action button disabled until the email address field contains an email that is registered with the current user's domain.
+* All Intune forms requiring some sort of selection will have the action button disabled until the selection(s) have been made.
+* Microsoft license options available in lAZy can be expanded; I have selected the most used (in my experience) to start with, but if you have other licenses you'd like to see, please submit a feature request *along with the license SkuID.* The SkuID can be found in several ways, including querying with Graph: `GET https://graph.microsoft.com/v1.0/subscrikedSkus`, or with the Microsoft.Graph.Identity.DirectoryManagement module command `Get-MgSubscribedSku | select skuPartNumber, SkuId | Format-List`
 
 # Required delegated Graph API permissions
 Note: only one is required from each list. Each list is also sorted from least to most privileged permissions for better clarity. See https://docs.microsoft.com/en-us/graph/permissions-reference for more/better information on Graph API permissions
