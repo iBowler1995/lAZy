@@ -18,5 +18,17 @@
     <File Build="0" ReferenceFunction="Show-PasswordReset_psf">PasswordReset.psf</File>
     <File Build="0" ReferenceFunction="Show-TermUser_psf">TermUser.psf</File>
     <File Build="0" ReferenceFunction="Show-GetClient_psf">GetClient.psf</File>
+    <File Build="0" ReferenceFunction="Show-AppIntallStatus_psf">AppIntallStatus.psf</File>
+    <File Build="0" ReferenceFunction="Show-AssignApp_psf">AssignApp.psf</File>
+    <File Build="0" ReferenceFunction="Show-LastLoggedOnUser_psf">LastLoggedOnUser.psf</File>
+    <File Build="0" ReferenceFunction="Show-RenameDevice_psf">RenameDevice.psf</File>
+    <File Build="0" ReferenceFunction="Show-RebootDevice_psf">RebootDevice.psf</File>
+    <File Build="0" ReferenceFunction="Show-ResetDevice_psf">ResetDevice.psf</File>
+    <File Build="0" ReferenceFunction="Show-SyncDevice_psf">SyncDevice.psf</File>
+    <File Build="0" ReferenceFunction="Show-NewPrimaryUser_psf">NewPrimaryUser.psf</File>
+    <File Build="0" ReferenceFunction="Show-UpdateStatus_psf">UpdateStatus.psf</File>
+    <File Build="0" ReferenceFunction="Show-ConfigPolicies_psf">ConfigPolicies.psf</File>
+    <File Build="0" ReferenceFunction="Show-CompliancePolicies_psf">CompliancePolicies.psf</File>
+    <File Build="0" ReferenceFunction="Show-About_psf">About.psf</File>
   </Files>
 </Project>

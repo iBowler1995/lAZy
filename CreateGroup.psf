@@ -1724,16 +1724,23 @@ FXH+S77xZ03Xr4yG5bBb/yuylL8iFH4U518aCL8aMb2bpnwc139ynvIHdfU/KIpmJ/BrY+jv09W8
   <Code><![CDATA[
 $formCreateAssignedGroup_Load={
 	#TODO: Initialize Form Controls here
+	$checkboxMailEnabled.Enabled = $False
 	$buttonCreateGroup.Enabled = $false
 	$global:MailEnabled = $False
 	$global:Unified = $False
 	$global:Description = $false
 	$formCreateAssignedGroup.add_Shown({ $formCreateAssignedGroup.Activate(); $textGroupName.Focus })
+	$CreateGroupLogFolderExists = (Test-Path -Path "$Env:ProgramData\AzureAdministrator\Logs\CreateGroup" -PathType Container)
+	If (!$CreateGroupLogFolderExists)
+	{
+		
+		New-Item -Path "$Env:ProgramData\AzureAdministrator\Logs" -Name 'CreateGroup' -ItemType directory -Force
+		
+	}
 }
 
 $buttonCreateGroup_Click={
 	#TODO: Place custom script here
-	$DisplayName = $textGroupName.Text
 	function New-AADGroup
 	{
 		
@@ -1898,6 +1905,7 @@ $buttonCreateGroup_Click={
 		}
 		
 	}
+	#############################################################################
 	function Get-AADGroup
 	{
 		
@@ -2017,9 +2025,11 @@ $buttonCreateGroup_Click={
 		}
 		
 	}
+	#############################################################################
+	$DisplayName = $textGroupName.Text
 	
 	
-	Start-Transcript -Path $Env:ProgramData\AzureAdministrator\Logs\CreateGroup.log
+	Start-Transcript -Path  "$Env:ProgramData\AzureAdministrator\Logs\CreateGroup\CreateGroup_$Timestamp.log"
 	If ((Get-AADGroup -Name $DisplayName) -ne $null)
 	{
 		[System.Windows.Forms.MessageBox]::Show('Group Already Exists', 'Group Already Exists', 'OK', 'Error')
@@ -2027,20 +2037,64 @@ $buttonCreateGroup_Click={
 	else
 	{
 		If ((!$checkboxMicrosoft365Group.Checked) -and ($textDescription.Text.Trim() -ne '') -and ($checkboxMailEnabled.Checked -eq $false))
-		{	
-			New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -Description ($textDescription.Text) -MailEnabled:$False -Unified:$False	
+		{
+			Try
+			{
+				
+				New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -Description ($textDescription.Text) -MailEnabled:$False -Unified:$False
+				
+			}
+			Catch
+			{
+				
+				[System.Windows.Forms.MessageBox]::show("Error creating group.`r`nError Message: $($_.Exception).`r`nFor more info, see logs.", 'Error', 'OK', 'Error')
+				
+			}
 		}
 		elseif ((!$checkboxMicrosoft365Group.Checked) -and ($textDescription.Text.Trim() -eq '') -and ($checkboxMailEnabled.Checked -eq $False))
 		{
-			New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -MailEnabled:$False -Unified:$False
+			Try
+			{
+				
+				New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -MailEnabled:$False -Unified:$False
+				
+			}
+			Catch
+			{
+				
+				[System.Windows.Forms.MessageBox]::show("Error creating group.`r`nError Message: $($_.Exception).`r`nFor more info, see logs.", 'Error', 'OK', 'Error')
+				
+			}
 		}
 		elseif (($checkboxMicrosoft365Group.Checked) -and ($textDescription.Text.Trim() -ne '') -and ($checkboxMailEnabled.Checked))
 		{
-			New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -Description $textDescription.Text -MailEnabled:$true -Unified:$true
+			Try
+			{
+				
+				New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -Description $textDescription.Text -MailEnabled:$true -Unified:$true
+				
+			}
+			Catch
+			{
+				
+				[System.Windows.Forms.MessageBox]::show("Error creating group.`r`nError Message: $($_.Exception).`r`nFor more info, see logs.", 'Error', 'OK', 'Error')
+				
+			}
 		}
 		elseif (($checkboxMicrosoft365Group.Checked) -and ($textDescription.Text.Trim() -eq '') -and ($checkboxMailEnabled.Checked))
 		{
-			New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -Unified:$true -MailEnabled:$true
+			Try
+			{
+				
+				New-AADGroup -Name $DisplayName -Nickname $textNickname.Text -Unified:$true -MailEnabled:$true
+				
+			}
+			Catch
+			{
+				
+				[System.Windows.Forms.MessageBox]::show("Error creating group.`r`nError Message: $($_.Exception).`r`nFor more info, see logs.", 'Error', 'OK', 'Error')
+				
+			}
 		}
 		
 		
@@ -2062,7 +2116,18 @@ $textGroupName_TextChanged={
 
 $checkboxMicrosoft365Group_CheckedChanged={
 	#TODO: Place custom script here
-	
+	If ($checkboxMicrosoft365Group.Checked -eq $True)
+	{
+		
+		$checkboxMailEnabled.Enabled = $true
+		
+	}
+	else
+	{
+		
+		$checkboxMailEnabled.Enabled = $false
+		
+	}
 }
 
 $textNickname_TextChanged={
