@@ -9,8 +9,7 @@ lAZy is lightweight and extremely simple to install. Launch the MSI manually and
 `msiexec /i lAZy.msi /qn`
 
 # Environment deployment pre-requisite(s)
-Currently the only pre-requisite to deploying lAZy to your environment is you'll need to set up a registered application in your AAD tenant. Microsoft has a really easy and straightforward guide on this: https://docs.microsoft.com/en-us/graph/auth-v2-user as well as this article on how to set up delegated API permissions: https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-configure-app-access-web-apis NOTE: The redirect I use for lAZy in my environment: https://login.microsoftonline.com/common/oauth2/nativeclient
-Once you have your application set up, note your ApplicationID (also called ClientID) and enter it in on first run.
+Currently the only pre-requisite to deploying lAZy to your environment is you'll need to set up a registered application in your AAD tenant. For step-by-step instructions, [see my write-up here](https://github.com/iBowler1995/LazyAzureAdministrator/blob/main/Knowledge%20Base/Azure%20App%20Registration.md) or [use Microsoft's guide](https://docs.microsoft.com/en-us/graph/auth-v2-user).
 
 # First Run
 All modules will be locked until you Log In. On first run, clicking the Log In button will open the GetClient form for the user to paste the ClientID into (Author's note: While I wouldn't share your application's ID with the world, it doesn't necessarily need to be kept in a top-secret vault. As long as you have the *Who can use this application or access this API?* setting for your registered application set to *Accounts in this organizational directory only*, only accounts from your tenant can authenticate to the app or API.)
