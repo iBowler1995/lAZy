@@ -37,7 +37,7 @@ Once you've successfully authenticated to your AAD tenant, the other modules wil
 * Windows Update Status: Review or export Windows Update status for a chosen Intune Update Ring or a specified device (the update ring the specified device is a part of must also be selected for this feature to work)
 
 # Functionality Notes
-* All Azure forms requiring user email address for input will have the action button disabled until the email address field contains an email that is registered with the current user's domain.
+* All Azure forms requiring user email address for input will have the action button disabled until the email address field contains an email that is registered with the current user's domain. (tl;dr: email must be active in your tenant)
 * All Intune forms requiring some sort of selection will have the action button disabled until the selection(s) have been made.
 * Microsoft license options available in lAZy can be expanded; I have selected the most used (in my experience) to start with, but if you have other licenses you'd like to see, please submit a feature request *along with the license SkuID.* The SkuID can be found in several ways, including querying with Graph: `GET https://graph.microsoft.com/v1.0/subscrikedSkus`, or with the Microsoft.Graph.Identity.DirectoryManagement module command `Get-MgSubscribedSku | select skuPartNumber, SkuId | Format-List`
 
