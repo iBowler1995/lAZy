@@ -16,10 +16,10 @@ All modules will be locked until you Log In. On first run, clicking the Log In b
 Once you've successfully authenticated to your AAD tenant, the other modules will be unlocked. Do note that if MFA is enabled on your account, you'll need to approve the login request.
 
 # Module Functionality
-* Assign License: Accepts user's email as input and assigned checked licenses to the user. (BUG NOTE: Currently when trying to assign multiple licenes at once, the task may fail due to Graph API limiting. Currently investigating.)
+* Assign License: Accepts user's email as input and assigned checked licenses to the user.
 * Add User to Group: On form load, gets all groups in your organization. Accepts user's email as input and add's user to any of the selected groups (can use ctrl click to select multiple groups)
 * Create Assigned Group: Accepts incipient group's displayName (required), mail nickname (required; no spaces is best, but use %20 for space if needed). Based on what options are checked, can create one of three types of groups: 1. a standard, statically assigned security group. Mail not enabled, because not an M365 group. 2. M365 group, mail disabled, or 3. M365 group, mail enabled
-* Create New User: Simple to fill out form to input incipient user's information on. Only requires first and last name to create the account. Allows for assignment of licenses (subject to the same bug mentioned above) and assignment to group(s). Random 12-character password will be generated and copied to your clipboard
+* Create New User: Simple to fill out form to input incipient user's information on. Only requires first and last name to create the account. Allows for assignment of licenses and assignment to group(s). Random 12-character password will be generated and copied to your clipboard
 * Disable User: Accepts user's email address and disables user
 * Edit User: Currently able to edit 7 fields for user: Given name, surname, title, office, manager email, moible phone, and department
 * Enable User: Accepts user's email address and enables user
