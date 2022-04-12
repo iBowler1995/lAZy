@@ -1,6 +1,6 @@
 # Welcome to the lAZy (formerly known as Lazy Azure Administrator) Project!
 
-Azure Administrator (AA) is a simple GUI application designed to handle most of your help desk needs. It currently focuses on user and group management, but future updates I plan to bring will add even more features such as mailbox management and AAD/Intune device management!
+lAZy is a simple GUI application designed to handle most of your Azure and Intune Help Desk needs.
 
 # How to Install
 lAZy is lightweight and extremely simple to install. Launch the MSI manually and click through the setup wizard, or install it programatically using the following command:
